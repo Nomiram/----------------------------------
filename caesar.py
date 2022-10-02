@@ -1,20 +1,20 @@
 '''
 Реализация алгоритма Цезаря
+UTF8 only
 '''
 import sys
 # EN = ""
-EN = " 1234567890abcdefghijklmnopqrstuvwxyz"
-RU = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+EN = "1234567890abcdefghijklmnopqrstuvwxyz"
+RU = " абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+ALL = RU + EN
 def caesar(text:str, offset:int):
     '''
     Алгоритм цезаря string, int
     '''
     ret_string = ""
     for i in text:
-        if i.lower() in EN:
-            ret_string += EN[(EN.find(i.lower())+offset)%len(EN)]
-        elif i.lower() in RU:
-            ret_string += RU[(RU.find(i.lower())+offset)%len(RU)]
+        if i.lower() in ALL:
+            ret_string += ALL[(ALL.find(i.lower())+offset)%len(ALL)]
         else:
             ret_string += i.lower()
             # ret_string += ""
@@ -41,7 +41,8 @@ def main():
 
     offs = int(input("Введите число:\n"))
     # file_caesar("test.txt","output.txt", offs)
-    file_caesar("voyna-i-mir-tom-1.txt","output.txt", offs)
+    file_caesar("granatovyy-braslet.txt","output.txt", offs)
+    # file_caesar("voyna-i-mir-tom-1.txt","output.txt", offs)
     file_caesar("output.txt","output№2.txt", -offs)
 
     print("DONE!")
